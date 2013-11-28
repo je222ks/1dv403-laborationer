@@ -5,12 +5,26 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-
-
-			// Din kod här.
-
-
-
+        console.log(date);
+        
+        // Googlade fram denna lösning då jag ej lyckades lösa det på något bra sätt.
+        // http://stackoverflow.com/questions/6177975/how-to-validate-date-with-format-mm-dd-yyyy-in-javascript
+        if(!/^\d{4}\-\d{2}\-\d{2}/.test(date)){  
+            throw new Error("Vad du angivit är ej ett giltigt formaterat födelsedatum.");
+        }
+        
+        var userDate = new Date(date);
+        var currentDate = new Date();
+        var currentYear = new Date().getFullYear();
+        var daysToGo = (userDate.setFullYear(currentYear) - currentDate) / 86400000; // Milliseconds to days
+        
+        if(daysToGo < 0){
+            var nextYear = (userDate.setFullYear(currentYear += 1) - currentDate) / 86400000;
+            return Math.round(nextYear);
+        }
+        else{
+            return Math.round(daysToGo);
+        }
 
 	};
 	// ------------------------------------------------------------------------------
