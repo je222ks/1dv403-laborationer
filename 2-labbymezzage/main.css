@@ -1,0 +1,34 @@
+body {
+    background-color: #b9b9b9;
+}
+
+h1 { 
+    text-align: center;
+    font-family: aguafina-script, cursive; 
+    font-size: 4em;
+    color: #87b9ba;
+    text-shadow: 2px 2px 2px black;
+}
+
+#messagefeed {
+    margin: 0 auto;
+    width: 400px;
+    background-color: #fff7c2;
+    box-shadow: 2px 2px 5px black;
+}
+
+#textarea{
+    margin-left: 8px;
+    margin-right: 8px:
+}
+
+#sendbutton{
+    margin-left: 335px;
+}
+
+.jsmessage {
+    margin: 3px;
+    padding: 1px;
+    background-color: white;
+    font-family: advent-pro, sans-serif;
+}
