@@ -3,9 +3,12 @@ var init;
 var messages;
 var addMsg;
 var renderMsg;
+var renderMsges;
+var deleteMsg;
 var send;
 var msg;
 var newMsg;
+var msgList;
 
 var messageBoard = {
     
@@ -13,16 +16,42 @@ var messageBoard = {
     
     init : function () {
         send = document.getElementById("sendbutton");
-        msg = document.getElementById("textarea");
+        
+        msgList = document.getElementById("msglist");
         send.onclick = messageBoard.addMsg;
     },
     
     addMsg : function () {
-        newMsg = new Message(msg.nodeValue, new Date());
+        msg = document.getElementById("textarea").value;
+        newMsg = new Message(msg, new Date());
         messageBoard.messages.push(newMsg);
+        messageBoard.renderMsges();
     },
     
-    renderMsg : function () {
+    renderMsg : function (messageID) {
+        var text = document.createElement("p");
+        text.innerHTML = messageBoard.messages[messageID].getHTMLText();
+        
+        // Skapar en div-tag för meddelandet.
+        var msgContainer = document.createElement("div");
+        msgContainer.className = "newmessage";
+        msgContainer.appendChild(text);
+        
+        msgList.appendChild(msgContainer);
+        
+        // Renderar räknaren.
+        var counter = document.getElementById("counter");
+        counter.innerHTML = "Antal meddelanden: " + messageBoard.messages.length;
+    },
+    
+    renderMsges : function () {
+        document.getElementById("msglist").innerHTML = "";
+        for (var i = 0; i < messageBoard.messages.length; i += 1){
+            messageBoard.renderMsg(i);
+        }
+    },
+    
+    deleteMsg : function () {
         
     }
 };
