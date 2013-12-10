@@ -6,9 +6,6 @@ var renderMsg;
 var renderMsges;
 var deleteMsg;
 var showTime;
-var send;
-var msg;
-var newMsg;
 var msgList;
 
 var messageBoard = {
@@ -16,26 +13,26 @@ var messageBoard = {
     messages : [],
     
     init : function () {
-        send = document.getElementById("sendbutton");
+        var send = document.getElementById("sendbutton");
         msgList = document.getElementById("msglist");
         send.onclick = messageBoard.addMsg;
         
         // Funktionaliteten för enter-tangenten.
         document.getElementById("textarea").onkeydown = function (e) {
-            if (!e){
+            if (!e) {
                 var e = window.event;
             }
             
-            if(e.keyCode === 13 && e.shiftKey === false){
+            if (e.keyCode === 13 && e.shiftKey === false) {
                 messageBoard.addMsg();
                 return false;
             }
-        }
+        };
     },
     
     addMsg : function () {
-        msg = document.getElementById("textarea").value;
-        newMsg = new Message(msg, new Date());
+        var msg = document.getElementById("textarea").value;
+        var newMsg = new Message(msg, new Date());
         messageBoard.messages.push(newMsg);
         messageBoard.renderMsges();
     },
