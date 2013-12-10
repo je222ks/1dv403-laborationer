@@ -1,5 +1,5 @@
 "use strict";
-var msgList;
+var msgList; // Lösa på ett bättre sätt?
 
 var messageBoard = {
     
@@ -34,6 +34,7 @@ var messageBoard = {
         var text = document.createElement("p");
         text.innerHTML = messageBoard.messages[messageID].getHTMLText();
         
+        // Skapar en div-tag för "meddelandetexten"
         var textContainer = document.createElement("div");
         textContainer.className = "textcontainer";
         textContainer.appendChild(text);
@@ -64,6 +65,7 @@ var messageBoard = {
         clockLink.className = "button";
         clockLink.appendChild(clockButton);
         
+        // Tidsstämpel
         var timeOfCreation = document.createElement("p");
         timeOfCreation.className = "time";
         timeOfCreation.appendChild(document.createTextNode(messageBoard.messages[messageID].getDate().toLocaleTimeString()));
