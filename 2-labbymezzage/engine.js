@@ -1,11 +1,4 @@
 "use strict";
-var init;
-var messages;
-var addMsg;
-var renderMsg;
-var renderMsges;
-var deleteMsg;
-var showTime;
 var msgList;
 
 var messageBoard = {
@@ -82,7 +75,7 @@ var messageBoard = {
         buttonContainer.appendChild(timeOfCreation);
         msgContainer.appendChild(buttonContainer);
         
-        msgList.appendChild(msgContainer);
+        messageBoard.init.msgList.appendChild(msgContainer);
         
         // Alt-text till knapparna och dess event.
         delButtton.setAttribute("alt", "Radera");
