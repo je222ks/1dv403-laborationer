@@ -1,5 +1,5 @@
 body {
-    background-color: #b9b9b9;
+    background-color: #005e50;
 }
 
 h1 { 
@@ -13,7 +13,7 @@ h1 {
 #messagefeed {
     margin: 0 auto;
     width: 400px;
-    background-color: #fff7c2;
+    background-color: #87b9ba;
     box-shadow: 2px 2px 5px black;
 }
 
@@ -23,22 +23,53 @@ h1 {
 }
 
 #sendbutton{
-    margin-left: 335px;
+    margin-left: 323px;
+    font-family: annie-use-your-telescope, sans-serif;
+    letter-spacing: 0.25em;
+    font-weight: bold;
 }
 
 #counter{
     text-align: right;
-    margin: 2px;
+    margin: 3px;
     padding: 2px;
+    font-family: annie-use-your-telescope, sans-serif;
+    letter-spacing: 0.25em;
 }
 
 /* js-generated */
 
 .newmessage {
-    margin: 9px;
+    display: inline-block;
+    margin-left: 9px;
     padding-left: 5px;
-    background-color: white;
+    background-color: rgba(142, 255, 229, 0.88);
     box-shadow: 1px 1px 1px black;
     font-family: advent-pro, sans-serif;
 }
 
+.textcontainer{
+    display: block;
+    width: 300px;
+    float: left;
+}
+
+.buttoncontainer{
+    margin-top: 4px;
+    display: inline;
+    width: 75px;
+    float: left;
+}
+
+.button{
+    float: right;
+    margin-right: 3px;
+    padding: 2px;
+}
+
+.time{
+    margin-top: 2px;
+    font-size: 0.8em;
+    text-align: right;
+    margin-right: 5px;
+}

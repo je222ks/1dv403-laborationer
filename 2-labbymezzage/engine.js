@@ -33,10 +33,14 @@ var messageBoard = {
         var text = document.createElement("p");
         text.innerHTML = messageBoard.messages[messageID].getHTMLText();
         
+        var textContainer = document.createElement("div");
+        textContainer.className = "textcontainer";
+        textContainer.appendChild(text);
+        
         // Skapar en div-tag för meddelandet.
         var msgContainer = document.createElement("div");
         msgContainer.className = "newmessage";
-        msgContainer.appendChild(text);
+        msgContainer.appendChild(textContainer);
         
         var buttonContainer = document.createElement("div");
         buttonContainer.className = "buttoncontainer";
@@ -59,9 +63,15 @@ var messageBoard = {
         clockLink.className = "button";
         clockLink.appendChild(clockButton);
         
+        var timeOfCreation = document.createElement("p");
+        timeOfCreation.className = "time";
+        timeOfCreation.appendChild(document.createTextNode(messageBoard.messages[messageID].getDate().toLocaleTimeString()));
+        
         // "Lägger in" knapparna i dess element.
         buttonContainer.appendChild(delLink);
         buttonContainer.appendChild(clockLink);
+        // Lägger in tidsstämpeln i samma div som knapparna för att underlätta senare formatering.
+        buttonContainer.appendChild(timeOfCreation);
         msgContainer.appendChild(buttonContainer);
         
         msgList.appendChild(msgContainer);
