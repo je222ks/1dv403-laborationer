@@ -83,8 +83,15 @@ var messageBoard = {
         }
     },
     
-    deleteMsg : function () {
-        
+    deleteMsg : function (messageID) {
+        var confirmation = confirm("Är Ni säker på att Ni vill ta bort detta meddelande?")
+        if(confirmation){
+            messageBoard.messages.splice(messageID, 1);
+        }
+        else{
+            alert("Meddelandet har ej tagits bort.");
+        }
+        messageBoard.renderMsges();
     }
 };
 
