@@ -31,7 +31,7 @@ h1 {
 
 #counter{
     text-align: right;
-    margin: 3px;
+    margin-right: 10px;
     padding: 2px;
     font-family: annie-use-your-telescope, sans-serif;
     letter-spacing: 0.25em;
@@ -50,8 +50,9 @@ h1 {
 
 .textcontainer{
     display: block;
-    width: 300px;
     float: left;
+    width: 300px;
+    word-wrap: break-word;
 }
 
 .buttoncontainer{

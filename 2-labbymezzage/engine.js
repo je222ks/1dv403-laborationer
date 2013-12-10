@@ -17,9 +17,20 @@ var messageBoard = {
     
     init : function () {
         send = document.getElementById("sendbutton");
-        
         msgList = document.getElementById("msglist");
         send.onclick = messageBoard.addMsg;
+        
+        // Funktionaliteten för enter-tangenten.
+        document.getElementById("textarea").onkeydown = function (e) {
+            if (!e){
+                var e = window.event;
+            }
+            
+            if(e.keyCode === 13 && e.shiftKey === false){
+                messageBoard.addMsg();
+                return false;
+            }
+        }
     },
     
     addMsg : function () {
@@ -80,12 +91,12 @@ var messageBoard = {
         delButtton.setAttribute("alt", "Radera");
         delButtton.onclick = function () {
             messageBoard.deleteMsg(messageID);
-        }
+        };
         
         clockButton.setAttribute("alt", "Tiden för skapande");
         clockButton.onclick = function () {
             messageBoard.showTime(messageID);
-        }
+        };
         
         // Renderar räknaren.
         var counter = document.getElementById("counter");
