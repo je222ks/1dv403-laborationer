@@ -105,6 +105,7 @@ var messageBoard = {
     
     renderMsges : function () {
         document.getElementById("msglist").innerHTML = "";
+        document.getElementById("textarea").value = "";
         for (var i = 0; i < messageBoard.messages.length; i += 1){
             messageBoard.renderMsg(i);
         }
