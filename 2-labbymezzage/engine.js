@@ -5,6 +5,7 @@ var addMsg;
 var renderMsg;
 var renderMsges;
 var deleteMsg;
+var showTime;
 var send;
 var msg;
 var newMsg;
@@ -71,6 +72,11 @@ var messageBoard = {
             messageBoard.deleteMsg(messageID);
         }
         
+        clockButton.setAttribute("alt", "Tiden för skapande");
+        clockButton.onclick = function () {
+            messageBoard.showTime(messageID);
+        }
+        
         // Renderar räknaren.
         var counter = document.getElementById("counter");
         counter.innerHTML = "Antal meddelanden: " + messageBoard.messages.length;
@@ -92,6 +98,10 @@ var messageBoard = {
             alert("Meddelandet har ej tagits bort.");
         }
         messageBoard.renderMsges();
+    },
+    
+    showTime : function (messageID) {
+        alert("Inlägget skapades " + messageBoard.messages[messageID].getDate().toLocaleDateString() + " klockan " +                messageBoard.messages[messageID].getDate().toLocaleTimeString());
     }
 };
 
