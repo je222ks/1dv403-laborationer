@@ -37,7 +37,39 @@ var messageBoard = {
         msgContainer.className = "newmessage";
         msgContainer.appendChild(text);
         
+        var buttonContainer = document.createElement("div");
+        buttonContainer.className = "buttoncontainer";
+        
+        // Skapar bilden
+        var delButtton = document.createElement("img");
+        delButtton.setAttribute("src", "delete.png");
+        // Skapar dess länk
+        var delLink = document.createElement("a");
+        delLink.setAttribute("href", "#");
+        delLink.className = "button";
+        delLink.appendChild(delButtton);
+        
+        // Skapar bilden
+        var clockButton = document.createElement("img");
+        clockButton.setAttribute("src", "clock.png");
+        // Skapar dess länk
+        var clockLink = document.createElement("a");
+        clockLink.setAttribute("href", "#");
+        clockLink.className = "button";
+        clockLink.appendChild(clockButton);
+        
+        // "Lägger in" knapparna i dess element.
+        buttonContainer.appendChild(delLink);
+        buttonContainer.appendChild(clockLink);
+        msgContainer.appendChild(buttonContainer);
+        
         msgList.appendChild(msgContainer);
+        
+        // Alt-text till knapparna och dess event.
+        delButtton.setAttribute("alt", "Radera");
+        delButtton.onclick = function () {
+            messageBoard.deleteMsg(messageID);
+        }
         
         // Renderar räknaren.
         var counter = document.getElementById("counter");
@@ -52,14 +84,7 @@ var messageBoard = {
     },
     
     deleteMsg : function () {
-        // Skapar bilden
-        var delButtton = document.createElement("img");
-        delButtton.setAttribute("src", "delete.png");
-        // Skapar dess länk
-        var delLink = document.createElement("a");
-        delLink.setAttribute("href", "#");
-        delLink.className = "button";
-        delLink.appendChild(delButtton);
+        
     }
 };
 
