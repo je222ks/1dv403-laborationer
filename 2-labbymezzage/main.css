@@ -26,9 +26,19 @@ h1 {
     margin-left: 335px;
 }
 
-.jsmessage {
-    margin: 3px;
-    padding: 1px;
+#counter{
+    text-align: right;
+    margin: 2px;
+    padding: 2px;
+}
+
+/* js-generated */
+
+.newmessage {
+    margin: 9px;
+    padding-left: 5px;
     background-color: white;
+    box-shadow: 1px 1px 1px black;
     font-family: advent-pro, sans-serif;
 }
+

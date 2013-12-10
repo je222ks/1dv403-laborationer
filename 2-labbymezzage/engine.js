@@ -52,7 +52,14 @@ var messageBoard = {
     },
     
     deleteMsg : function () {
-        
+        // Skapar bilden
+        var delButtton = document.createElement("img");
+        delButtton.setAttribute("src", "delete.png");
+        // Skapar dess länk
+        var delLink = document.createElement("a");
+        delLink.setAttribute("href", "#");
+        delLink.className = "button";
+        delLink.appendChild(delButtton);
     }
 };
 
