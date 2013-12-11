@@ -1,13 +1,11 @@
 "use strict";
-var msgList; // Lösa på ett bättre sätt?
-
 var messageBoard = {
     
     messages : [],
     
     init : function () {
         var send = document.getElementById("sendbutton");
-        msgList = document.getElementById("msglist");
+        var msgList = document.getElementById("msglist");
         send.onclick = messageBoard.addMsg;
         
         // Funktionaliteten för enter-tangenten.
@@ -77,7 +75,7 @@ var messageBoard = {
         buttonContainer.appendChild(timeOfCreation);
         msgContainer.appendChild(buttonContainer);
         
-        messageBoard.init.msgList.appendChild(msgContainer);
+        (document.getElementById("msglist")).appendChild(msgContainer);
         
         // Alt-text till knapparna och dess event.
         delButtton.setAttribute("alt", "Radera");
