@@ -2,8 +2,8 @@
 
 var Memory = {
     
-    playBoard : null, 
-
+    playBoard : null, // array för den slumpade arrayen.
+    
     init : function () {    
         var rowInput = 4;
         var colInput = 4;
@@ -39,10 +39,22 @@ var Memory = {
         document.body.appendChild(memoryContainer);
     },
     
+     pieceChecker : [], // för senare jämförelse av brickor.
+
     flipImage : function (piece, a) {
         a.onclick = function () {
-            document.getElementsByTagName("img")[piece].setAttribute("src", "pics/"+ Memory.playBoard[piece] +".png")
+            document.getElementsByTagName("img")[piece].setAttribute("src", "pics/"+ Memory.playBoard[piece] +".png");
+            
+            Memory.pieceChecker.push(a);
+            
+            if(Memory.pieceChecker.length === 2){
+                setTimeout(function () {
+                    // Skall anropa en ytterligare funktion för att jämföra bilderna.
+                }, 1000);
+            }
         }
+        
+        
     }
     
 };
