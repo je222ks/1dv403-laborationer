@@ -17,18 +17,32 @@ var Memory = {
         var memoryContainer = document.createElement("div");
         memoryContainer.className = "gamecontainer";
         var memoryImg;
-        var imgSrc;
+        var imgLink;
+        var gamePiece = 0;
         
         for (i = 0; i < Memory.playBoard.length; i +=1 ){
-            imgSrc = "pics/" + Memory.playBoard[i] + ".png";
             memoryImg = document.createElement("img");
-            memoryImg.setAttribute("src", imgSrc);   
-              
-            memoryContainer.appendChild(memoryImg);
+            memoryImg.setAttribute("src", "pics/0.png");   
+            
+            imgLink = document.createElement("a");
+            imgLink.setAttribute("href", "#");
+        
+            imgLink.appendChild(memoryImg);
+        
+            memoryContainer.appendChild(imgLink);
+            
+            gamePiece += 1;
+            
+            Memory.flipImage(gamePiece, imgLink);
         }
         
         document.body.appendChild(memoryContainer);
+    },
+    
+    flipImage : function (piece, link) {
+        
     }
+    
 };
               
 window.onload = Memory.init;
