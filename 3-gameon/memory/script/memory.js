@@ -1,14 +1,15 @@
 "use strict";
 
 var Memory = {
+    rowInput : 4,
+    colInput : 4,
+    pairs : 0,
+    tries : 0,
     
     playBoard : null, // array för den slumpade arrayen.
     
     init : function () {    
-        var rowInput = 4;
-        var colInput = 4;
-        
-        Memory.playBoard = RandomGenerator.getPictureArray(rowInput, colInput);
+        Memory.playBoard = RandomGenerator.getPictureArray(Memory.rowInput, Memory.colInput);
         Memory.renderBoard();
     },
     
@@ -50,11 +51,30 @@ var Memory = {
             if(Memory.pieceChecker.length === 2){
                 setTimeout(function () {
                     // Skall anropa en ytterligare funktion för att jämföra bilderna.
+                    Memory.compareImages(Memory.pieceChecker);
                 }, 1000);
             }
         }
-        
-        
+    },
+    
+    compareImages : function (compArr) {
+        // lika
+        if (compArr[0].getElementsByTagName("img")[0].getAttribute("src") === compArr[1].getElementsByTagName("img")[0].getAttribute("src")){
+            Memory.pairs +=1;
+            Memory.pieceChecker = []; // "nollställer" arrayen, bättre sätt att lösa?
+            if(Memory.pairs === ((Memory.colInput * Memory.rowInput) / 2)){
+                var infoText = document.createElement("h3");
+                infoText.className = "infotext";
+                infoText.innerHTML = "Ni har lyckats hitta alla par. Ni behövde " + Memory.tries + " försök för att klara det.";
+                document.body.appendChild(infoText);
+            }
+        }
+        else{
+            compArr[0].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
+            compArr[1].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
+            Memory.pieceChecker = []; // "nollställer" arrayen, bättre sätt att lösa?
+        }
+        Memory.tries += 1;
     }
     
 };
