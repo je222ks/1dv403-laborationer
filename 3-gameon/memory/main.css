@@ -1,0 +1,27 @@
+body{
+    background-color: #d6fffa;
+}
+
+h1{
+    text-align: center;
+    padding: 5%;
+    font-family: aguafina-script, cursive;
+    font-size: 4em;
+    color: #763232;
+}
+
+img{
+    float: left;
+    padding: 24px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+
+/* js-generated */
+
+.gamecontainer{
+    margin: 0 auto;
+    width: 300px;
+}
+
