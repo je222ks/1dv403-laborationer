@@ -44,8 +44,10 @@ var Memory = {
 
     flipImage : function (piece, a) {
         a.onclick = function () {
-            document.getElementsByTagName("img")[piece].setAttribute("src", "pics/"+ Memory.playBoard[piece] +".png");
-            
+            if(Memory.pieceChecker.length < 2){
+                document.getElementsByTagName("img")[piece].setAttribute("src", "pics/"+ Memory.playBoard[piece] +".png");
+            }
+                
             Memory.pieceChecker.push(a);
             
             if(Memory.pieceChecker.length === 2){
@@ -70,6 +72,7 @@ var Memory = {
             }
         }
         else{
+            // Återställer brickorna till ursprungsbilden
             compArr[0].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
             compArr[1].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
             Memory.pieceChecker = []; // "nollställer" arrayen, bättre sätt att lösa?
