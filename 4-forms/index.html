@@ -11,12 +11,14 @@
             <h1>Fyll i din betalningsplan</h1>
             <form id="payform" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post">
                 <div id="fnCont">
-                <label for="fName">Förnamn</label>    
-                <input id="fName" type="text" name="firstName" placeholder="Ange förnamn" />
+                    <label for="fName">Förnamn</label>    
+                    <input id="fName" type="text" name="firstName" placeholder="Ange förnamn" />
                 </div>
                 <br />
-                <label for="lName">Efternamn</label>
-                <input id="lName" type="text" name="lastName" placeholder="Ange efternamn" />
+                <div id="lnCont">
+                    <label for="lName">Efternamn</label>
+                    <input id="lName" type="text" name="lastName" placeholder="Ange efternamn" />
+                </div>
                 <br />
                 <label for="zipCode">Postnummer</label>
                 <input id="zipCode" type="tel" name="zipCode" placeholder="Ange postnummer" />
