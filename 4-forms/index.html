@@ -4,25 +4,28 @@
         <title>Betalningsplan</title>
         <link href="main.css" rel="stylesheet" type="text/css" />
         <script src="//use.edgefonts.net/economica;coda.js"></script> 
+
     </head>
     <body>
         <div id="container">
             <h1>Fyll i din betalningsplan</h1>
-            <form id="contactform" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post">
+            <form id="payform" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php" method="post">
+                <div id="fnCont">
                 <label for="fName">Förnamn</label>    
-                <input id="fName" type="text" placeholder="Ange förnamn" />
+                <input id="fName" type="text" name="firstName" placeholder="Ange förnamn" />
+                </div>
                 <br />
                 <label for="lName">Efternamn</label>
-                <input id="lName" type="text" placeholder="Ange efternamn" />
+                <input id="lName" type="text" name="lastName" placeholder="Ange efternamn" />
                 <br />
                 <label for="zipCode">Postnummer</label>
-                <input id="zipCode" type="tel" placeholder="Ange postnummer" />
+                <input id="zipCode" type="tel" name="zipCode" placeholder="Ange postnummer" />
                 <br />
                 <label for="email">E-Post</label>
-                <input id="epost" type="email" placeholder="Ange E-post" />
+                <input id="epost" type="email" name="eMail" placeholder="Ange E-post" />
                 <br />
                 <label for="priceRange">Prismodell</label>
-                <select id="priceRange">
+                <select id="priceRange" name="priceRange">
                     <option value="low">Låg</option>
                     <option value="mid">Medel</option>
                     <option value="high">Hög</option>
@@ -31,5 +34,6 @@
                 <input id="submitbutton" type="submit" value="Godkän" />
             </form>
         </div>
+    <script src="validator.js"></script>
     </body>    
 </html>

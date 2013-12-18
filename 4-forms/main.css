@@ -51,11 +51,15 @@ select{
     width: 170px;
     margin-top: 8%;
     display: inline-block;
-    font-size: 1.3em;
-    letter-spacing: .2em;
-    font-family: economica, sans-serif;
-    font-weight:  bold;
+    font-size: 1.1em;
+    font-family: coda, sans-serif;
     color: rgba(250, 243, 164, 1);
     text-shadow: 1px 1px 1px #6d6767;
     background: linear-gradient(to bottom, #00e0ac 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+}
+
+.errorInfo{
+    display: inline-block;
+    margin-left: 1%;
+    color: #a34848;
 }
