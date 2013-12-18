@@ -1,41 +1,35 @@
 "use strict";
-var minAge;
-var maxAge;
-var averageAge;
-var i;
-var sum;
-var tempNames;
-var names = "";
 
 var makePerson = function (persArr) {
 
-    var result = {};
+    var person = {};
     
-	minAge = Math.min(persArr[0].age, persArr[1].age, persArr[2].age);
+    person.minAge = 0;
+    person.maxAge = 0;
+    person.averageAge = 0;
+    person.names = "";
+    var sortedNames = [];
+    var i;
     
-    maxAge = Math.max(persArr[0].age, persArr[1].age, persArr[2].age);
+	person.minAge = Math.min(persArr[0].age, persArr[1].age, persArr[2].age);
     
-    averageAge = function () {
-        sum = 0;
-        
-        for (i = 0; i < persArr.length; i += 1) {
-            sum += persArr[i].age;
-        }
-        
-        return Math.round(sum / persArr.length);
-    };
+    person.maxAge = Math.max(persArr[0].age, persArr[1].age, persArr[2].age);
+
+    for (i = 0; i < persArr.length; i += 1) {
+        sortedNames[i] = persArr[i].name;
+        person.averageAge += persArr[i].age;
+    }
     
-    tempNames = [persArr[0].name, persArr[1].name, persArr[2].name];
-    tempNames.sort();
-    names = tempNames.join(", ");
+    person.averageAge = Math.round(person.averageAge / persArr.length);
     
-    result = {minAge: minAge, maxAge: maxAge, averageAge: averageAge(), names: names };
+    sortedNames = sortedNames.sort(function (a, b) { return a.toString().localeCompare(b.toString()); });
     
-    return result;
+    person.names = sortedNames.join(", ");
+    
+    return person;
 };
 
 var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
 
 var result = makePerson(data);
 
-console.log(result);
