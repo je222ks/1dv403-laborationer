@@ -21,12 +21,12 @@ window.onload = function () {
     
             if(str.charAt(i) === str.charAt(i).toUpperCase())
             {
-                convertedStr = convertedStr += str.charAt(i).toLowerCase();
+                convertedStr = convertedStr += str.charAt(i).toLocaleLowerCase();
             }
             
             else if(str.charAt(i) == str.charAt(i).toLowerCase())
             {
-                convertedStr = convertedStr += str.charAt(i).toUpperCase();
+                convertedStr = convertedStr += str.charAt(i).toLocaleUpperCase();
             }
         }
         
