@@ -16,7 +16,10 @@ var Validator = {
         
         Validator.firstName.onblur = function () {
             if (Validator.firstName.value === "") {
-                errorHandler("Detta fält får inte lämnas tomt", "msg1", "fnCont");
+                var idComp = document.getElementById("msg1");
+                if (!idComp){
+                    errorHandler("Detta fält får inte lämnas tomt", "msg1", "fnCont");
+                }
             } 
             else { // Tog en stund innan det slog mig att meddelandet även måste plockas bort då problemet är löst...
                 var dltMsg = document.getElementById("msg1");
@@ -26,7 +29,10 @@ var Validator = {
         
         Validator.lastName.onblur = function () {
             if (Validator.lastName.value === "") {
-                errorHandler("Detta fält får inte lämnas tomt", "msg2", "lnCont");
+                var idComp = document.getElementById("msg2");
+                if (!idComp){
+                    errorHandler("Detta fält får inte lämnas tomt", "msg2", "lnCont");
+                }    
             }
             else {
                 var dltMsg = document.getElementById("msg2");
@@ -43,9 +49,32 @@ var Validator = {
                 // Plats för senare förändring.
             }
             else {
-                errorHandler("Postkoden är angiven på ett felaktigt sätt", "msg3", "zcCont");
+                var idComp = document.getElementById("msg3");
+                if (!idComp){
+                    errorHandler("Postkoden är angiven på ett felaktigt sätt", "msg3", "zcCont");
+                }
             }
         }
+        
+        Validator.eMail.onblur = function () {
+          
+            var tempMail = Validator.eMail.value;
+            var comp = /^$/;
+            
+            if (tempMail.match(comp)) {
+                /* var tempDiv = document.getElementById("msg4");
+                if (tempDiv) {
+                    tempDiv.parentNode.removeChild(tempDiv);
+                } */
+            }
+            else {
+                var idComp = document.getElementById("msg4");
+                if (!idComp){
+                    errorHandler("E-Postadressen är ej angiven på ett korrekt sätt", "msg4", "emCont");
+                }
+            }
+            
+        };
         
         function errorHandler (errorTxt, msgID, containerID) {
             var errorMsg = document.createTextNode(errorTxt);
@@ -57,7 +86,7 @@ var Validator = {
             msg.appendChild(errorMsg);
             var errorCont = document.getElementById(containerID);
             errorCont.appendChild(msg);
-        };
+        }
     }
 };
 
