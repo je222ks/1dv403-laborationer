@@ -9,9 +9,20 @@ var Validator = {
     lastName : document.forms[0]["lastName"],
     zipCode : document.forms[0]["zipCode"],
     eMail : document.forms[0]["eMail"],
+    validateCounter : 0,
     
     init : function () {
-        // document.getElementById("submitbutton").disabled = true;
+        
+        var checkValidiation = function (numberOfPasses) {
+            if (numberOfPasses < 4){
+                document.getElementById("submitbutton").disabled = true;
+                console.log(Validator.validateCounter);
+            }
+            else if (numberOfPasses === 4){
+                // Fungerar inte. Gör ngt fel då den alltid är aktiverad...
+                //document.getElementById("submitbutton").disabled = false;
+            }
+        }
         
         // Förnamn
         Validator.firstName.onblur = function () {
@@ -23,6 +34,7 @@ var Validator = {
             } 
             else { // Tog en stund innan det slog mig att meddelandet även måste plockas bort då problemet är löst...
                 errorDelete("msg1");
+                checkValidiation(Validator.validateCounter += 1);
             }
         };
         
@@ -37,6 +49,7 @@ var Validator = {
             else {
                 // Tar bort om det finns ngt felmeddelande
                 errorDelete("msg2");
+                checkValidiation(Validator.validateCounter += 1);
             }
         };
         
@@ -55,7 +68,8 @@ var Validator = {
                 
                 // Gör om allting till XXXXX. 
                 zip = zip.replace(/(-|\ |SE)/g, "", "");
-                alert(zip);
+                
+                checkValidiation(Validator.validateCounter += 1);
             }
             else {
                 var idComp = document.getElementById("msg3");
@@ -74,6 +88,7 @@ var Validator = {
             if (tempMail.match(comp)) {
                 // Tar bort om det finns ngt felmeddelande
                 errorDelete("msg4");
+                checkValidiation(Validator.validateCounter += 1);
             }
             else {
                 var idComp = document.getElementById("msg4");
@@ -103,21 +118,17 @@ var Validator = {
                 dltMsg.parentNode.removeChild(dltMsg);
             }
         }
-        
-        document.getElementById("submitbutton").onclick = Validator.renderPopUp;
+
+        document.getElementById("submitbutton").onclick = Validator.renderPopUp;   
     },
     
     
     
     renderPopUp : function (e) {
-        e.preventDefault();
-        
         var fadeBG = document.createElement("div");
         fadeBG.setAttribute("id", "fadeBg");
-        fadeBG.className = "confirmButton";
         var popUp = document.createElement("div");
         popUp.setAttribute("id", "popup");
-        popUp.className = "confirmButton";
         
         var title = document.createElement("h3");
         var titleText = document.createTextNode("Vänligen bekräfta ditt köp");
@@ -126,6 +137,7 @@ var Validator = {
         popUp.appendChild(title);
         
         var infoList = document.createElement("ul");
+        infoList.setAttribute("id", "confirmList");
         
         for (var i = 0; i < Validator.form.length - 1; i += 1) {
             var li = document.createElement("li");
@@ -138,14 +150,18 @@ var Validator = {
         
         var acceptButton = document.createElement("button");
         acceptButton.setAttribute("type", "button");
-        acceptButton.setAttribute("value", "Bekräfta");
-    
+        var acceptButtonText = document.createTextNode("Bekräfta");
+        acceptButton.appendChild(acceptButtonText);
+        acceptButton.className = "confirmButton";
+        
         var cancelButton = document.createElement("button");
         cancelButton.setAttribute("type", "button");
-        cancelButton.setAttribute("value", "Avbryt");
+        var cancelButtonText = document.createTextNode("Avbryt");
+        cancelButton.appendChild(cancelButtonText);
+        cancelButton.className = "confirmButton";
         
-        popUp.appendChild(acceptButton);
         popUp.appendChild(cancelButton);
+        popUp.appendChild(acceptButton);
         
 
         
@@ -161,6 +177,8 @@ var Validator = {
         
         document.body.appendChild(fadeBG);
         document.body.appendChild(popUp);
+        
+        return false;
     }
 };
 
