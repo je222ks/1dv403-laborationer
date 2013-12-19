@@ -91,7 +91,7 @@ var Validator = {
             var msg = document.createElement("p");
             // Klass för styling och ett id för att senare plocka bort meddelandet då inputen inte längre är tom.
             msg.className = "errorInfo";
-            msg.setAttribute(id, msgID);
+            msg.setAttribute("id", msgID);
             msg.appendChild(errorMsg);
             var errorCont = document.getElementById(containerID);
             errorCont.appendChild(msg);
@@ -113,25 +113,41 @@ var Validator = {
         e.preventDefault();
         
         var fadeBG = document.createElement("div");
-        fadeBG.setAttribute(id, "fadeBg");
+        fadeBG.setAttribute("id", "fadeBg");
         fadeBG.className = "confirmButton";
         var popUp = document.createElement("div");
-        popUp.setAttribute(id, "popup");
+        popUp.setAttribute("id", "popup");
         popUp.className = "confirmButton";
         
+        var title = document.createElement("h3");
+        var titleText = document.createTextNode("Vänligen bekräfta ditt köp");
+        title.appendChild(titleText);
+        
+        popUp.appendChild(title);
+        
+        var infoList = document.createElement("ul");
+        
+        for (var i = 0; i < Validator.form.length - 1; i += 1) {
+            var li = document.createElement("li");
+            var getLabel = document.getElementsByTagName("label");
+            li.appendChild(document.createTextNode(getLabel[i].textContent + ": " + document.forms[0][i].value));
+            infoList.appendChild(li);
+        }
+        
+        popUp.appendChild(infoList);
+        
         var acceptButton = document.createElement("button");
-        acceptButton.setAttribute(type, "button");
-        acceptButton.setAttribute(value, "Bekräfta");
+        acceptButton.setAttribute("type", "button");
+        acceptButton.setAttribute("value", "Bekräfta");
     
         var cancelButton = document.createElement("button");
-        cancelButton.setAttribute(type, "button");
-        cancelButton.setAttribute(value, "Avbryt");
+        cancelButton.setAttribute("type", "button");
+        cancelButton.setAttribute("value", "Avbryt");
         
         popUp.appendChild(acceptButton);
         popUp.appendChild(cancelButton);
         
-        document.body.appendChild(fadeBG);
-        document.body.appendChild(popUp);
+
         
         acceptButton.onclick = function () {
             Validator.form.submit();
@@ -142,6 +158,9 @@ var Validator = {
             document.body.removeChild(fadeBG);
             document.body.removeChild(popUp);
         }
+        
+        document.body.appendChild(fadeBG);
+        document.body.appendChild(popUp);
     }
 };
 
