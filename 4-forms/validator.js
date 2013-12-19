@@ -16,39 +16,48 @@ var Validator = {
         
         Validator.firstName.onblur = function () {
             if (Validator.firstName.value === "") {
-                var errorMsg = document.createTextNode("Detta fält får inte lämnas tomt");
-                // Skapar en p-tag eftersom jag inte kan styla (vad jag kom på) textnoden på samma sätt.
-                var msg = document.createElement("p");
-                // Klass för styling och ett id för att senare plocka bort meddelandet då inputen inte längre är tom.
-                msg.className = "errorInfo";
-                msg.id = "msg1";
-                msg.appendChild(errorMsg);
-                var errorCont = document.getElementById("fnCont");
-                errorCont.appendChild(msg);
-            }
-            else{ // Tog en stund innan det slog mig att meddelandet även måste plockas bort då problemet är löst...
+                errorHandler("Detta fält får inte lämnas tomt", "msg1", "fnCont");
+            } 
+            else { // Tog en stund innan det slog mig att meddelandet även måste plockas bort då problemet är löst...
                 var dltMsg = document.getElementById("msg1");
                 dltMsg.parentNode.removeChild(dltMsg);
             }
-        }
+        };
         
         Validator.lastName.onblur = function () {
             if (Validator.lastName.value === "") {
-                var errorMsg = document.createTextNode("Detta fält får inte lämnas tomt");
-                // Skapar en p-tag eftersom jag inte kan styla (vad jag kom på) textnoden på samma sätt.
-                var msg = document.createElement("p");
-                // Klass för styling och ett id för att senare plocka bort meddelandet då inputen inte längre är tom.
-                msg.className = "errorInfo";
-                msg.id = "msg2";
-                msg.appendChild(errorMsg);
-                var errorCont = document.getElementById("lnCont");
-                errorCont.appendChild(msg);
+                errorHandler("Detta fält får inte lämnas tomt", "msg2", "lnCont");
             }
-            else{
+            else {
                 var dltMsg = document.getElementById("msg2");
                 dltMsg.parentNode.removeChild(dltMsg);
             }
+        };
+        
+        Validator.zipCode.onblur = function () {
+            // Lägger dess värde i en variabel för enklare justeringar senare för "glada användarvänlighet".
+            var zip = Validator.zipCode.value;
+            var basic = /^\d{5}$/;
+            
+            if (zip.match(basic)) {
+                // Plats för senare förändring.
+            }
+            else {
+                errorHandler("Postkoden är angiven på ett felaktigt sätt", "msg3", "zcCont");
+            }
         }
+        
+        function errorHandler (errorTxt, msgID, containerID) {
+            var errorMsg = document.createTextNode(errorTxt);
+            // Skapar en p-tag eftersom jag inte kan styla (vad jag kom på) textnoden på samma sätt.
+            var msg = document.createElement("p");
+            // Klass för styling och ett id för att senare plocka bort meddelandet då inputen inte längre är tom.
+            msg.className = "errorInfo";
+            msg.id = msgID;
+            msg.appendChild(errorMsg);
+            var errorCont = document.getElementById(containerID);
+            errorCont.appendChild(msg);
+        };
     }
 };
 

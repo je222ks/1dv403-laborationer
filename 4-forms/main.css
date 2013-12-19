@@ -60,6 +60,7 @@ select{
 
 .errorInfo{
     display: inline-block;
+    width: 220px;
     margin-left: 1%;
     color: #a34848;
 }
