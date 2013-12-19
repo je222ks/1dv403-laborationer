@@ -1,6 +1,5 @@
 "use strict";
 
-
 var Validator = {
 
     // "Laddar in" formuläret
@@ -12,7 +11,7 @@ var Validator = {
     eMail : document.forms[0]["eMail"],
     
     init : function () {
-        document.getElementById("submitbutton").disabled = true;
+        // document.getElementById("submitbutton").disabled = true;
         
         // Förnamn
         Validator.firstName.onblur = function () {
@@ -23,8 +22,7 @@ var Validator = {
                 }
             } 
             else { // Tog en stund innan det slog mig att meddelandet även måste plockas bort då problemet är löst...
-                var dltMsg = document.getElementById("msg1");
-                dltMsg.parentNode.removeChild(dltMsg);
+                errorDelete("msg1");
             }
         };
         
@@ -37,8 +35,8 @@ var Validator = {
                 }    
             }
             else {
-                var dltMsg = document.getElementById("msg2");
-                dltMsg.parentNode.removeChild(dltMsg);
+                // Tar bort om det finns ngt felmeddelande
+                errorDelete("msg2");
             }
         };
         
@@ -46,12 +44,18 @@ var Validator = {
         Validator.zipCode.onblur = function () {
             // Lägger dess värde i en variabel för enklare justeringar senare för "glada användarvänlighet".
             var zip = Validator.zipCode.value;
-            var basic = /^\d{5}$/;
+            // var basic = /^\d{5}$/;                          // XXXXX
+                         // Finns lr ej  // Finns lr ej
+            var checkAll = /^(SE)?[\ ]?[\d]{3}(-\ )?[\d]{2}$/;
             
-            if (zip.match(basic)) {
-                var dltMsg = document.getElementById("msg3");
-                dltMsg.parentNode.removeChild(dltMsg);
-                // Plats för senare förändring.
+            // Matchar alla format
+            if (zip.match(checkAll)) {
+                // Tar bort om det finns ngt felmeddelande
+                errorDelete("msg3");
+                
+                // Gör om allting till XXXXX. 
+                zip = zip.replace(/(-|\ |SE)/g, "", "");
+                alert(zip);
             }
             else {
                 var idComp = document.getElementById("msg3");
@@ -59,17 +63,17 @@ var Validator = {
                     errorHandler("Postkoden är angiven på ett felaktigt sätt", "msg3", "zcCont");
                 }
             }
-        }
+        };
         
         // Mail
         Validator.eMail.onblur = function () {
           
             var tempMail = Validator.eMail.value;
-            var comp = /^(?!\.)[\w\.-]{1,}(?!\.)@(?!\.)[a-z]*\.[a-z]{2,}$/i;
+            var comp = /^(?!\.)[\w\.-]{1,}(?!\.)@(?!\.)[a-z]+\.[a-z]{2,}$/i;
             
             if (tempMail.match(comp)) {
-                var dltMsg = document.getElementById("msg4");
-                dltMsg.parentNode.removeChild(dltMsg);
+                // Tar bort om det finns ngt felmeddelande
+                errorDelete("msg4");
             }
             else {
                 var idComp = document.getElementById("msg4");
@@ -91,6 +95,13 @@ var Validator = {
             msg.appendChild(errorMsg);
             var errorCont = document.getElementById(containerID);
             errorCont.appendChild(msg);
+        }
+        
+        function errorDelete (messageID) {
+            if (document.getElementById(messageID)){
+                var dltMsg = document.getElementById(messageID);
+                dltMsg.parentNode.removeChild(dltMsg);
+            }
         }
     }
 };
