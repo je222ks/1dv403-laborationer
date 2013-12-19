@@ -91,7 +91,7 @@ var Validator = {
             var msg = document.createElement("p");
             // Klass för styling och ett id för att senare plocka bort meddelandet då inputen inte längre är tom.
             msg.className = "errorInfo";
-            msg.id = msgID;
+            msg.setAttribute(id, msgID);
             msg.appendChild(errorMsg);
             var errorCont = document.getElementById(containerID);
             errorCont.appendChild(msg);
@@ -102,6 +102,45 @@ var Validator = {
                 var dltMsg = document.getElementById(messageID);
                 dltMsg.parentNode.removeChild(dltMsg);
             }
+        }
+        
+        document.getElementById("submitbutton").onclick = Validator.renderPopUp;
+    },
+    
+    
+    
+    renderPopUp : function (e) {
+        e.preventDefault();
+        
+        var fadeBG = document.createElement("div");
+        fadeBG.setAttribute(id, "fadeBg");
+        fadeBG.className = "confirmButton";
+        var popUp = document.createElement("div");
+        popUp.setAttribute(id, "popup");
+        popUp.className = "confirmButton";
+        
+        var acceptButton = document.createElement("button");
+        acceptButton.setAttribute(type, "button");
+        acceptButton.setAttribute(value, "Bekräfta");
+    
+        var cancelButton = document.createElement("button");
+        cancelButton.setAttribute(type, "button");
+        cancelButton.setAttribute(value, "Avbryt");
+        
+        popUp.appendChild(acceptButton);
+        popUp.appendChild(cancelButton);
+        
+        document.body.appendChild(fadeBG);
+        document.body.appendChild(popUp);
+        
+        acceptButton.onclick = function () {
+            Validator.form.submit();
+            Validator.form.reset();
+        }
+        
+        cancelButton.onclick = function () {
+            document.body.removeChild(fadeBG);
+            document.body.removeChild(popUp);
         }
     }
 };

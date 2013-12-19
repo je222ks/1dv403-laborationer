@@ -64,3 +64,11 @@ select{
     margin-left: 1%;
     color: #a34848;
 }
+
+#fadeBg{
+    background-color: black;
+}
+
+.confirmButton{
+    float: right;
+}
