@@ -14,6 +14,7 @@ var Validator = {
     init : function () {
         document.getElementById("submitbutton").disabled = true;
         
+        // Förnamn
         Validator.firstName.onblur = function () {
             if (Validator.firstName.value === "") {
                 var idComp = document.getElementById("msg1");
@@ -27,6 +28,7 @@ var Validator = {
             }
         };
         
+        // Efternamn
         Validator.lastName.onblur = function () {
             if (Validator.lastName.value === "") {
                 var idComp = document.getElementById("msg2");
@@ -40,12 +42,15 @@ var Validator = {
             }
         };
         
+        // Postkod
         Validator.zipCode.onblur = function () {
             // Lägger dess värde i en variabel för enklare justeringar senare för "glada användarvänlighet".
             var zip = Validator.zipCode.value;
             var basic = /^\d{5}$/;
             
             if (zip.match(basic)) {
+                var dltMsg = document.getElementById("msg3");
+                dltMsg.parentNode.removeChild(dltMsg);
                 // Plats för senare förändring.
             }
             else {
@@ -56,26 +61,26 @@ var Validator = {
             }
         }
         
+        // Mail
         Validator.eMail.onblur = function () {
           
             var tempMail = Validator.eMail.value;
-            var comp = /^$/;
+            var comp = /^(?!\.)[\w\.-]{1,}(?!\.)@(?!\.)[a-z]*\.[a-z]{2,}$/i;
             
             if (tempMail.match(comp)) {
-                /* var tempDiv = document.getElementById("msg4");
-                if (tempDiv) {
-                    tempDiv.parentNode.removeChild(tempDiv);
-                } */
+                var dltMsg = document.getElementById("msg4");
+                dltMsg.parentNode.removeChild(dltMsg);
             }
             else {
                 var idComp = document.getElementById("msg4");
                 if (!idComp){
-                    errorHandler("E-Postadressen är ej angiven på ett korrekt sätt", "msg4", "emCont");
+                    errorHandler("E-Postadressen är ej en giltig adress", "msg4", "emCont");
                 }
             }
             
         };
         
+        // Gemensam funktion för visning av felmeddelanden
         function errorHandler (errorTxt, msgID, containerID) {
             var errorMsg = document.createTextNode(errorTxt);
             // Skapar en p-tag eftersom jag inte kan styla (vad jag kom på) textnoden på samma sätt.
