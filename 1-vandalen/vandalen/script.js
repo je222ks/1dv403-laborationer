@@ -22,6 +22,9 @@ var makePerson = function (persArr) {
     
     person.averageAge = Math.round(person.averageAge / persArr.length);
     
+    // Förstår inte riktigt hur jag fått detta att fungera. Nu när jag tittar på det i efterhand känns det som att det fattas ngt.
+    // Tror att jag utgått efter detta http://www.w3schools.com/jsref/jsref_sort.asp - var points = [40,100,1,5,25,10];
+    // points.sort(function(a,b){return a-b}); men jag kan inte säga att jag i nuläget förtår fullt ut hur detta fungerar.
     sortedNames = sortedNames.sort(function (a, b) { return a.toString().localeCompare(b.toString()); });
     
     person.names = sortedNames.join(", ");

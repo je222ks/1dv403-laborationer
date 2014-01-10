@@ -20,10 +20,11 @@ window.onload = function(){
         
         if(daysToGo < 0){
             var nextYear = (userDate.setFullYear(currentYear += 1) - currentDate) / 86400000;
-            return Math.round(nextYear);
+            // Förstår nu skillnaden mellan round och floor, och varför jag bör använda floor.
+            return Math.floor(nextYear);
         }
         else{
-            return Math.round(daysToGo);
+            return Math.floor(daysToGo);
         }
 
 	};

@@ -43,12 +43,16 @@ var Memory = {
      pieceChecker : [], // för senare jämförelse av brickor.
 
     flipImage : function (piece, a) {
-        a.onclick = function () {
+        a.onclick = function (e) {
+            var i = 0;
             if(Memory.pieceChecker.length < 2){
-                document.getElementsByTagName("img")[piece].setAttribute("src", "pics/"+ Memory.playBoard[piece] +".png");
+                // var picOne = document.getElementsByTagName("img")[piece].setAttribute("src", "pics/"+ Memory.playBoard[piece] +".png");
+                var ruta = e.target;
+                ruta.setAttribute("src", "pics/"+ Memory.playBoard[piece] +".png");
+                console.log(ruta);
             }
                 
-            Memory.pieceChecker.push(a);
+            Memory.pieceChecker.push(ruta);
             
             if(Memory.pieceChecker.length === 2){
                 setTimeout(function () {
@@ -61,7 +65,8 @@ var Memory = {
     
     compareImages : function (compArr) {
         // lika
-        if (compArr[0].getElementsByTagName("img")[0].getAttribute("src") === compArr[1].getElementsByTagName("img")[0].getAttribute("src")){
+        console.log(compArr);
+        if (compArr[0].getAttribute("src") === compArr[1].getAttribute("src")){
             Memory.pairs +=1;
             Memory.pieceChecker = []; // "nollställer" arrayen, bättre sätt att lösa?
             if(Memory.pairs === ((Memory.colInput * Memory.rowInput) / 2)){
@@ -73,8 +78,9 @@ var Memory = {
         }
         else{
             // Återställer brickorna till ursprungsbilden
-            compArr[0].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
-            compArr[1].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
+            compArr[0].setAttribute("src", "pics/0.png");
+            compArr[1].setAttribute("src", "pics/0.png"); 
+            // console.log(compArr);
             Memory.pieceChecker = []; // "nollställer" arrayen, bättre sätt att lösa?
         }
         Memory.tries += 1;

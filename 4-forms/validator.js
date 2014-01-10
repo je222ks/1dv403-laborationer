@@ -14,13 +14,13 @@ var Validator = {
     init : function () {
         
         var checkValidiation = function (numberOfPasses) {
-            if (numberOfPasses < 4){
+            if (numberOfPasses < 4 || numberOfPasses === null){
                 document.getElementById("submitbutton").disabled = true;
                 console.log(Validator.validateCounter);
             }
             else if (numberOfPasses === 4){
-                // Fungerar inte. Gör ngt fel då den alltid är aktiverad...
-                //document.getElementById("submitbutton").disabled = false;
+                // Fungerar inte. Gör ngt fel då den alltid är aktiverad... Möjligen löst?
+                document.getElementById("submitbutton").disabled = false;
             }
         }
         
@@ -125,6 +125,8 @@ var Validator = {
     
     
     renderPopUp : function (e) {
+        document.getElementById("submitbutton").disabled = true;
+        
         var fadeBG = document.createElement("div");
         fadeBG.setAttribute("id", "fadeBg");
         var popUp = document.createElement("div");
@@ -173,6 +175,7 @@ var Validator = {
         cancelButton.onclick = function () {
             document.body.removeChild(fadeBG);
             document.body.removeChild(popUp);
+            document.getElementById("submitbutton").disabled = false;
         }
         
         document.body.appendChild(fadeBG);
