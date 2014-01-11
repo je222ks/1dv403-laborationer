@@ -10,6 +10,7 @@ body {
     height: 640px;
     margin: 0 auto;
     position: relative;
+    z-index: 100;
 }
 
 #menufield {
@@ -23,4 +24,31 @@ body {
 
 #menuthumb {
     margin: 10px;
+}
+
+
+/* Window */ 
+
+#windowdiv {
+    width: 300px;
+    height: 400px;
+    background-color: #a5a5a5;
+    z-index: 300;
+    position: relative;
+    top: 70px;
+    left: 60px;
+}
+
+#topbar {
+    background-color: black;
+    height: 35px;
+}
+
+#statusfield {
+    background-color: white;
+    height: 20px;
+    width: inherit;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
 }
