@@ -5,7 +5,7 @@ body {
 /* JS-Generated */ 
 
 #mainBG {
-    background: url(deskbg.png);
+    background: url(pics/deskbg.png);
     width: 1024px;
     height: 640px;
     margin: 0 auto;
@@ -37,18 +37,44 @@ body {
     position: relative;
     top: 70px;
     left: 60px;
+    border-radius: 5px;
 }
 
-#topbar {
-    background-color: black;
+.topbar {
+    background: linear-gradient(to bottom, rgba(208,208,208,1) 0%,rgba(47,47,47,1) 100%);
     height: 35px;
+    border-radius: 5px;
+    width: inherit;
 }
 
-#statusfield {
-    background-color: white;
+.upperthumb {
+    float: left;
+    width: 15px;
+    margin: 10px;
+}
+
+.tooltip {
+    color: white;
+    width: 100px;
+    margin-left: 30px;
+    padding: 7px;
+    font-family: actor, sans-serif;
+    font-size: 0.85em;
+}
+
+.closewin {
+    width: 30px;
+    float: right;
+    margin-top: -40px;
+    margin-right: 20px;
+}
+
+.statusfield {
+    background: linear-gradient(to bottom, rgba(208,208,208,1) 0%,rgba(134,134,134,1) 100%);
     height: 20px;
     width: inherit;
     position: absolute;
     bottom: 0px;
     left: 0px;
+    border-radius: 5px;
 }

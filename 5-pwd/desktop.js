@@ -14,7 +14,7 @@ var Desktop = {
         menuChoice.setAttribute("id", "imgview");
         
         var menuThumb = document.createElement("img");
-        menuThumb.setAttribute("src", "imgthumb.png");
+        menuThumb.setAttribute("src", "pics/imgthumb.png");
         menuThumb.setAttribute("id", "menuthumb");
         menuChoice.appendChild(menuThumb);
         
