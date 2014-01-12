@@ -45,11 +45,16 @@ var imageWindow = {
             topBar.appendChild(toolTip);
             topBar.appendChild(closeWin);
             
+            // Contentfield
+            var content = document.createElement("div");
+            content.setAttribute("id", "wincont");
+            
             // Status field
             var statusField = document.createElement("div");
             statusField.setAttribute("class", "statusfield");
             
             windowDiv.appendChild(topBar);
+            windowDiv.appendChild(content);
             windowDiv.appendChild(statusField);
             
             document.getElementById("mainBG").appendChild(windowDiv);
@@ -63,7 +68,51 @@ var imageWindow = {
     },
     
     addContent : function (response) {
-        console.log(response);
+        var imgCollection = JSON.parse(response);
+        console.log(imgCollection);
+        
+        var sortedImgsWidth = [];
+        var sortedImgsHeight = [];
+        
+        for (var i = 0; i < imgCollection.length; i += 1) {
+            sortedImgsWidth[i] = imgCollection[i].thumbWidth;
+            sortedImgsHeight[i] = imgCollection[i].thumbHeight;
+        }
+        
+        function sortDescending (a, b) {
+            return b - a;
+        }
+        
+        sortedImgsWidth.sort(sortDescending);
+        
+        sortedImgsHeight.sort(sortDescending);
+        
+        console.log(sortedImgsWidth);
+        console.log(sortedImgsWidth[0]);
+        
+        for (var i = 0; i < imgCollection.length; i += 1){  
+            var div = document.createElement("div");
+            div.setAttribute("style", "width:" + sortedImgsWidth[0] + "px");
+            div.setAttribute("style", "height" + sortedImgsHeight[0] + "px");
+            div.setAttribute("class", "imgcont");
+            
+            var a = document.createElement("a");
+            a.setAttribute("href", "#");       
+            a.onclick = function(e) {
+                return false;
+            }
+            
+            var img = document.createElement("img");
+            img.setAttribute("src", imgCollection[i].thumbURL);
+            //img.setAttribute("style", "width:" + sortedImgsWidth[0] + "px");
+            //img.setAttribute("style", "height" + sortedImgsHeight[0] + "px");
+            //img.setAttribute("class", "imgcont");
+            
+            a.appendChild(img);
+            div.appendChild(a);
+            document.getElementById("wincont").appendChild(div);
+        }
+        
     }
     
 };
