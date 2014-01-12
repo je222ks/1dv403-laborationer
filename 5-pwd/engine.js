@@ -22,6 +22,12 @@ var Application = {
         incData.open("get", url, true);
         
         incData.send(null);
+    },
+    
+    changeBackground : function (url) {
+        var desk = document.getElementById("mainBG");
+        //desk.setAttribute("style", "background: url(" + url + ")");
+        console.log(url);
     }
     
 };

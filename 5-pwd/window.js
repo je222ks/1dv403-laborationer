@@ -69,7 +69,6 @@ var imageWindow = {
     
     addContent : function (response) {
         var imgCollection = JSON.parse(response);
-        console.log(imgCollection);
         
         var sortedImgsWidth = [];
         var sortedImgsHeight = [];
@@ -87,26 +86,31 @@ var imageWindow = {
         
         sortedImgsHeight.sort(sortDescending);
         
-        console.log(sortedImgsWidth);
         console.log(sortedImgsWidth[0]);
+        console.log(sortedImgsHeight[0]);
         
         for (var i = 0; i < imgCollection.length; i += 1){  
             var div = document.createElement("div");
-            div.setAttribute("style", "width:" + sortedImgsWidth[0] + "px");
-            div.setAttribute("style", "height" + sortedImgsHeight[0] + "px");
             div.setAttribute("class", "imgcont");
+            // Fick till det här av en ren slump då jag var på gränsen att formatera om allting...
+            // Uppenbarligen låg felet i att den inte läste korrekt utan paranteser :/ 
+            // Snacka om att kasta bort tid på att försöka lösa ngt som var så pass lätt...
+            div.style.width = (sortedImgsWidth[0]+ "px");
+            div.style.height = (sortedImgsHeight[0]+ "px");
             
             var a = document.createElement("a");
-            a.setAttribute("href", "#");       
+            a.setAttribute("href", "#"); 
+            a.setAttribute("class", "imglink");
             a.onclick = function(e) {
+                console.log(imgCollection[i]);
+                Application.changeBackground();
                 return false;
             }
             
+            
             var img = document.createElement("img");
             img.setAttribute("src", imgCollection[i].thumbURL);
-            //img.setAttribute("style", "width:" + sortedImgsWidth[0] + "px");
-            //img.setAttribute("style", "height" + sortedImgsHeight[0] + "px");
-            //img.setAttribute("class", "imgcont");
+            img.setAttribute("class", "imgthumb");
             
             a.appendChild(img);
             div.appendChild(a);

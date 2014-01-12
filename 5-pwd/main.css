@@ -74,18 +74,27 @@ body {
 #wincont {
     height: 345px;
     width: inherit;
-    background: black;
+    background: #9f9f9f;
     overflow-y: auto;
 }
 
 .imgcont {
-    display: block;
-    float: left;
-    padding: 5px;
-    background: black;
-    margin: 3px;
+    display: inline-block;
+    padding: 4px;
+    background: #bababa;
+    margin: 5px;
+    border-radius: 4px;
 }
 
+.imglink {
+    display: block;
+    margin: 0 auto;
+}
+
+.imgthumb {
+    display: block;
+    margin: 0 auto;
+}
 
 .statusfield {
     background: linear-gradient(to bottom, rgba(208,208,208,1) 0%,rgba(134,134,134,1) 100%);
