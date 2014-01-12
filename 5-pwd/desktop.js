@@ -12,6 +12,10 @@ var Desktop = {
         var menuChoice = document.createElement("a");
         menuChoice.setAttribute("href", "#");
         menuChoice.setAttribute("id", "imgview");
+        menuChoice.onclick = function (e) {
+            imageWindow.renderWindow();
+            return false;
+        };
         
         var menuThumb = document.createElement("img");
         menuThumb.setAttribute("src", "pics/imgthumb.png");
@@ -22,5 +26,4 @@ var Desktop = {
         mainBG.appendChild(menuField);
         document.body.appendChild(mainBG);
     }
-    
 };

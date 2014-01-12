@@ -10,6 +10,7 @@ var imageWindow = {
             // Whole window
             var windowDiv = document.createElement("div");
             windowDiv.setAttribute("id", "windowdiv");
+            windowDiv.onload = Application.fetchData("http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", imageWindow.addContent);
             
             // Top bar
             var topBar = document.createElement("div");
@@ -32,7 +33,7 @@ var imageWindow = {
             closeWin.onclick = function (e) {
                 imageWindow.closeWindow();
                 return false;
-            }
+            };
             
             var dltButton = document.createElement("img");
             dltButton.setAttribute("src", "pics/closebutton.png");
@@ -59,6 +60,10 @@ var imageWindow = {
         console.log("asd"); 
         var shutWindow = document.getElementById("windowdiv");
         shutWindow.parentNode.removeChild(shutWindow);
+    },
+    
+    addContent : function (response) {
+        console.log(response);
     }
     
 };

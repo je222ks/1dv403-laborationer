@@ -38,6 +38,8 @@ body {
     top: 70px;
     left: 60px;
     border-radius: 5px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 .topbar {
