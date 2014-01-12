@@ -53,6 +53,17 @@ var imageWindow = {
             var statusField = document.createElement("div");
             statusField.setAttribute("class", "statusfield");
             
+            var loadingGif = document.createElement("img");
+            loadingGif.setAttribute("src", "pics/ajax-loader.gif");
+            loadingGif.setAttribute("id", "loadinggif");
+            statusField.appendChild(loadingGif);
+            
+            var pLoad = document.createElement("p");
+            pLoad.innerHTML = "Laddar...";
+            pLoad.setAttribute("id", "loadinfo");
+            statusField.appendChild(pLoad);
+            
+            // Putting it all together
             windowDiv.appendChild(topBar);
             windowDiv.appendChild(content);
             windowDiv.appendChild(statusField);
@@ -86,9 +97,6 @@ var imageWindow = {
         
         sortedImgsHeight.sort(sortDescending);
         
-        console.log(sortedImgsWidth[0]);
-        console.log(sortedImgsHeight[0]);
-        
         for (var i = 0; i < imgCollection.length; i += 1){  
             var div = document.createElement("div");
             div.setAttribute("class", "imgcont");
@@ -117,6 +125,22 @@ var imageWindow = {
             document.getElementById("wincont").appendChild(div);
         }
         
+    },
+    
+    renderLoading : function () {
+        var ico = document.getElementById("loadinggif");
+        ico.style.display = "block";
+        
+        var txt = document.getElementById("loadinfo");
+        txt.style.display = "block";
+    },
+    
+    clearLoading : function () {
+        var ico = document.getElementById("loadinggif");
+        ico.style.display = "none";
+        
+        var txt = document.getElementById("loadinfo");
+        txt.style.display = "none";
     }
     
 };

@@ -105,3 +105,21 @@ body {
     left: 0px;
     border-radius: 5px;
 }
+
+#loadinggif {
+    margin: 2px;
+    max-width: 100px;
+    display: block;
+    float: left;
+}
+
+#loadinfo {
+    width: 100px;
+    font-size: 0.75em;
+        font-family: actor, sans-serif;
+    display: block;
+    float: left;
+    color: white;
+    margin-left: 5px;
+    margin-top: 1px;
+}

@@ -13,6 +13,7 @@ var Application = {
             if (incData.readyState === 4) {
                 if (incData.status >= 200 && incData.status < 300 || incData.status === 304) {
                     callback(incData.responseText);
+                    imageWindow.clearLoading();
                 } else {
                     console.log("Läsfel, status: " + incData.status);
                 }
@@ -22,6 +23,14 @@ var Application = {
         incData.open("get", url, true);
         
         incData.send(null);
+        setTimeout(function () {
+            if(incData.responseText){
+                return false;
+            }
+            else {
+                imageWindow.renderLoading();
+            }
+        }, 300);
     },
     
     changeBackground : function (url) {
