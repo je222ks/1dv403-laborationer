@@ -73,7 +73,6 @@ var imageWindow = {
     },
     
     closeWindow : function () {
-        console.log("asd"); 
         var shutWindow = document.getElementById("windowdiv");
         shutWindow.parentNode.removeChild(shutWindow);
     },
@@ -110,8 +109,7 @@ var imageWindow = {
             a.setAttribute("href", "#"); 
             a.setAttribute("class", "imglink");
             a.onclick = function(e) {
-                console.log(imgCollection[i]);
-                Application.changeBackground();
+                Application.changeBackground(e.target.getAttribute("src"), imgCollection);
                 return false;
             }
             

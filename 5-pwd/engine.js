@@ -33,10 +33,16 @@ var Application = {
         }, 300);
     },
     
-    changeBackground : function (url) {
+    changeBackground : function (url, coll) {
+        // Möjligen väldigt dumt sätt att lösa det? Känndes väldigt omständigt...
         var desk = document.getElementById("mainBG");
-        //desk.setAttribute("style", "background: url(" + url + ")");
-        console.log(url);
+        for(var i = 0; i < coll.length; i += 1){
+            if(coll[i]["thumbURL"] === url){
+                var bg = coll[i]["URL"];
+            }
+        }
+        desk.setAttribute("style", "background: url(" + bg + ")");
+        
     }
     
 };
