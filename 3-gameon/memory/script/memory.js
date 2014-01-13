@@ -60,13 +60,14 @@ var Memory = {
                     Memory.compareImages(Memory.pieceChecker);
                 }, 1000);
             }
+            return false;
         }
     },
     
     compareImages : function (compArr) {
         // lika
         console.log(compArr);
-        if (compArr[0].getAttribute("src") === compArr[1].getAttribute("src")){
+        if (compArr[0].getAttribute("src") === compArr[1].getAttribute("src") && compArr[0] !== compArr[1]){
             Memory.pairs +=1;
             Memory.pieceChecker = []; // "nollställer" arrayen, bättre sätt att lösa?
             if(Memory.pairs === ((Memory.colInput * Memory.rowInput) / 2)){
